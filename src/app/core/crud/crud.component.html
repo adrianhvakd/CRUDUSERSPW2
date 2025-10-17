@@ -1,0 +1,24 @@
+@if(error()){
+<div style="color:brown" class="error">
+  error:
+  {{error()}}
+</div>
+}
+
+
+<button (click)="onAdd()">+</button>
+<div>
+@for(user of usuariosResource.value()?.data;track user.id){
+  <div>*
+    {{user.id}}
+    {{user.name}}
+  </div>
+}
+
+</div>
+@if(modal()){
+<div class="modal-overlay">
+  <button (click)="onClose()">x</button>
+  <app-form-crud></app-form-crud>
+</div>
+}

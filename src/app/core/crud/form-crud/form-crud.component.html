@@ -1,0 +1,28 @@
+<div>
+  <div class="color:red">
+    {{error()}}
+  </div>
+  <form action="" [formGroup]="datosFormGroup" (submit)="enviar()" >
+    <div>
+      <label for="name">Nombre</label>
+      <input formControlName="name" type="text" name="name" placeholder="Nombre" id="name">
+      @if(hasError('name')){
+        <div>
+          {{getErrorMessage('name')}}
+        </div>
+      }
+    </div>
+    <div>
+      <label for="email">Email</label>
+      <input  formControlName="email" type="email" name="email" placeholder="Email" id="email">
+      @if(hasError('email')){
+        <div>
+          {{getErrorMessage('email')}}
+        </div>
+      }
+    </div>
+    <div>
+      <button [disabled]="datosFormGroup.invalid" (click)="guardar()">Guardar</button>
+    </div>
+  </form>
+</div>
