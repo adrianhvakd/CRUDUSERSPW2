@@ -5,14 +5,17 @@ import { routes } from './app.routes';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { provideDatabase, getDatabase } from '@angular/fire/database';
+import { providePrimeNG } from 'primeng/config';
+import Aura from '@primeuix/themes/aura';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 const firebaseConfig = {
-  apiKey: "AIzaSyB8REzH-ymd1PCqZIiYo_SOSRXdok6knHI",
-  authDomain: "borrar1-c26c9.firebaseapp.com",
-  databaseURL: "https://borrar1-c26c9-default-rtdb.firebaseio.com",
-  projectId: "borrar1-c26c9",
-  storageBucket: "borrar1-c26c9.firebasestorage.app",
-  messagingSenderId: "1037533696825",
-  appId: "1:1037533696825:web:80d187b5510557c6c0cee8"
+  apiKey: "AIzaSyDffaV_rtnAw438xfz91m3HaCA8zObaICo",
+  authDomain: "borrar1-2a0bf.firebaseapp.com",
+  databaseURL: "https://borrar1-2a0bf-default-rtdb.firebaseio.com",
+  projectId: "borrar1-2a0bf",
+  storageBucket: "borrar1-2a0bf.firebasestorage.app",
+  messagingSenderId: "596359231117",
+  appId: "1:596359231117:web:2fbca2596571fe08f594c4",
 };
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -20,6 +23,12 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideClientHydration(withEventReplay()),
     provideFirebaseApp(() => initializeApp(firebaseConfig)),
-    provideDatabase(() => getDatabase())
+    provideDatabase(() => getDatabase()),
+    provideAnimationsAsync(),
+    providePrimeNG({
+            theme: {
+                preset: Aura
+            }
+        })
   ]
 };
