@@ -8,6 +8,8 @@ import { provideDatabase, getDatabase } from '@angular/fire/database';
 import { providePrimeNG } from 'primeng/config';
 import Aura from '@primeuix/themes/aura';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { provideAuth, getAuth} from '@angular/fire/auth'
+
 const firebaseConfig = {
   apiKey: "AIzaSyDffaV_rtnAw438xfz91m3HaCA8zObaICo",
   authDomain: "borrar1-2a0bf.firebaseapp.com",
@@ -17,6 +19,7 @@ const firebaseConfig = {
   messagingSenderId: "596359231117",
   appId: "1:596359231117:web:2fbca2596571fe08f594c4",
 };
+
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
@@ -25,10 +28,14 @@ export const appConfig: ApplicationConfig = {
     provideFirebaseApp(() => initializeApp(firebaseConfig)),
     provideDatabase(() => getDatabase()),
     provideAnimationsAsync(),
+    provideAuth(()=> getAuth()),
     providePrimeNG({
-            theme: {
-                preset: Aura
-            }
-        })
+      theme: {
+        preset: Aura,
+        options: {
+          darkModeSelector: true
+        }
+      }
+    })
   ]
 };
